@@ -60,7 +60,8 @@ In the following deployment steps, you will:
 - Test connectivity and visualize results
 - Clean-up resources
 
-
+> [!NOTE]
+> You can use the ```./infra/deployment/deploy-all.sh``` script to run the deployment automatically.
 
 ### 1. Deploying the telemetry platform layer
 
