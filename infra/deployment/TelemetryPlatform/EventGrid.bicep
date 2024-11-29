@@ -154,4 +154,20 @@ resource devices 'Microsoft.EventGrid/namespaces/clients@2024-06-01-preview' = [
   }
 }]
 
+// Create the broadcast service
+resource vehiclebroadcastservice 'Microsoft.EventGrid/namespaces/clients@2024-06-01-preview' = {
+  name: 'vehiclebroadcastservice'
+  parent: eventGridNamespace
+  properties: {
+    attributes: {
+      type: 'vehicle'
+    }
+    authenticationName: 'vehiclebroadcastservice.mqtt.contoso.com'
+    clientCertificateAuthentication: {
+      validationScheme: 'SubjectMatchesAuthenticationName'
+    }
+    description: 'Service for broadcasting traffic events to vehicles'
+    state: 'Enabled'
+  }
+}
 

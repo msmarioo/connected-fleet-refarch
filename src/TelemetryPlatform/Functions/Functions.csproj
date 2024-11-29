@@ -6,7 +6,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventGrid" Version="3.4.2" />
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.EventHubs" Version="6.3.5" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.OpenApi" Version="1.5.1" />
     <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.4.1" />
+    <PackageReference Include="MQTTnet" Version="4.3.7.1207" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -18,6 +20,15 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Shared\DataContracts\DataContracts.csproj" />
+    <ProjectReference Include="..\..\Shared\DataContracts\DataContracts.csproj" />    
   </ItemGroup>
+
+  <Target Name="CopyCertificates" AfterTargets="Build">
+    <ItemGroup>
+      <ExternalCertificates Include="../../../infra/deployment/TelemetryPlatform/cert-gen/certs/vehiclebroadcastservice.*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(ExternalCertificates)" DestinationFolder="$(OutputPath)/certificates" />
+  </Target>
+
+
 </Project>

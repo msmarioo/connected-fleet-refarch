@@ -10,7 +10,7 @@ pushd ./cert-gen
 ./certGen.sh create_leaf_certificate_from_intermediate device03
 ./certGen.sh create_leaf_certificate_from_intermediate device04
 ./certGen.sh create_leaf_certificate_from_intermediate device05
-./certGen.sh create_leaf_certificate_from_intermediate service01
+./certGen.sh create_leaf_certificate_from_intermediate vehiclebroadcastservice
 
 popd
 

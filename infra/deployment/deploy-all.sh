@@ -43,14 +43,14 @@ deploy_telemetry_platform() {
     fi
 
     # Deploy telemetry platform resources
-    echo "Deploying telemetry platform..."
+    echo "Deploying telemetry platform resources..."
     az deployment group create --resource-group ${RG_TELEMETRYPLATFORM} --template-file ./main.bicep --output table
 
     popd
 
     # Deploy telemetry platform functions  
+    echo "Deploying telemetry platform functions..."
     pushd ../../src/TelemetryPlatform/Functions
-
     export tpfunctionapp=$(az functionapp list --query "[].name" --resource-group ${RG_TELEMETRYPLATFORM} --output tsv)
     func azure functionapp publish ${tpfunctionapp} --dotnet
 
